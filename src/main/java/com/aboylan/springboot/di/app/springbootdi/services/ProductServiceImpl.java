@@ -3,12 +3,17 @@ package com.aboylan.springboot.di.app.springbootdi.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.aboylan.springboot.di.app.springbootdi.models.Product;
 import com.aboylan.springboot.di.app.springbootdi.repositories.ProductoRepositoryImpl;
 
+@Component
 public class ProductServiceImpl implements ProductService {
 
-    private ProductoRepositoryImpl repository = new ProductoRepositoryImpl();
+    @Autowired
+    private ProductoRepositoryImpl repository;
 
     @Override
     public List<Product> findAll() {
