@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 import com.aboylan.springboot.di.app.springbootdi.models.Product;
 
 @Component
-public class ProductoRepositoryImpl implements ProductRepository {
+public class ProductRepositoryImpl implements ProductRepository {
 
     private List<Product> data;
 
-    public ProductoRepositoryImpl() {
+    public ProductRepositoryImpl() {
         this.data = Arrays.asList(
                 new Product(1L, "Memoria Corsair 32", 300L),
                 new Product(2L, "CPU Intel Core i9", 850L),
