@@ -3,11 +3,11 @@ package com.aboylan.springboot.di.app.springbootdi.repositories;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.aboylan.springboot.di.app.springbootdi.models.Product;
 
-@Component
+@Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
     private List<Product> data;
