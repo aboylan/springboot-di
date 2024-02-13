@@ -6,14 +6,13 @@ import java.util.List;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Repository;
 
 import com.aboylan.springboot.di.app.springbootdi.models.Product;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Repository
+
 public class ProductoRepositoryJson implements ProductRepository {
 
     private List<Product> list;
@@ -34,12 +33,12 @@ public class ProductoRepositoryJson implements ProductRepository {
 
     @Override
     public List<Product> findAll() {
-        return null;
+        return list;
     }
 
     @Override
     public Product findById(Long id) {
-        return null;
+        return list.stream().filter(p -> p.getId().equals(id)).findFirst().orElseThrow();
     }
 
 }
