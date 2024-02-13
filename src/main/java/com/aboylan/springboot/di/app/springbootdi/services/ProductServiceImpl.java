@@ -14,7 +14,7 @@ public class ProductServiceImpl implements ProductService {
 
     private ProductRepository repository;
 
-    public ProductServiceImpl(@Qualifier("productFoo") ProductRepository repository) {
+    public ProductServiceImpl(@Qualifier("productList") ProductRepository repository) {
         this.repository = repository;
     }
 
@@ -26,6 +26,8 @@ public class ProductServiceImpl implements ProductService {
             Product newProd = (Product) p.clone();
             newProd.setPrice(priceTax.longValue());
             return newProd;
+            // p.setPrice(priceTax.longValue());
+            // return p;
         }).collect(Collectors.toList());
     }
 
