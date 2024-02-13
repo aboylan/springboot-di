@@ -8,10 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import com.aboylan.springboot.di.app.springbootdi.models.Product;
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 public class ProductoRepositoryJson implements ProductRepository {
 
@@ -19,13 +16,17 @@ public class ProductoRepositoryJson implements ProductRepository {
 
     public ProductoRepositoryJson() {
         Resource resource = new ClassPathResource("json/product.json");
+        readValueJson(resource);
+    }
+
+    public ProductoRepositoryJson(Resource resource) {
+        readValueJson(resource);
+    }
+
+    private void readValueJson(Resource resource) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            list = Arrays.asList(objectMapper.readValue(resource.getFile(), Product[].class));
-        } catch (StreamReadException e) {
-            e.printStackTrace();
-        } catch (DatabindException e) {
-            e.printStackTrace();
+            list = Arrays.asList(objectMapper.readValue(resource.getInputStream(), Product[].class));
         } catch (IOException e) {
             e.printStackTrace();
         }
